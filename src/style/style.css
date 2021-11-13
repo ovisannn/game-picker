@@ -1,0 +1,34 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #393E46;
+    padding-top: 30px;
+}
+
+.frm-style{
+    padding:5px;
+    color: #EEEEEE ;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid;
+    font-size: 24px;
+    width: 100%px;
+    background-color: transparent;
+    height: 35px;
+    -webkit-transition: border-bottom .30s ease-in-out;
+    -webkit-transition: color .20s ease-in-out;
+}
+
+.frm-style:focus{
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid #00ADB5;
+    color: #00ADB5;
+}
+
+  
