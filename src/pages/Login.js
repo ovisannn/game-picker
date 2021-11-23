@@ -7,7 +7,7 @@ const Login1 = () => {
     return (
         <div className="md:container md:mx-auto">
             {/* HEADER */}
-            <div class="grid">
+            <div class="grid" style={{paddingTop:'30px'}}>
                 <div className="flex justify-between">
                     <div>
                         <Link to='/'>
