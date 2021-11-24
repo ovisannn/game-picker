@@ -1,47 +1,43 @@
 import { Link } from 'react-router-dom'
 
-import arrow from '../img/arrow.svg'
-
 import LoginForm from '../components/LoginForm'
 import Logo from '../components/Logo'
 
-
-const Login = () => {
+const Login1 = () => {
     return (
-        <div className="container">
-            {/* headr */}
-            <div className="row">
-
-                <div className="col">
+        <div className="md:container md:mx-auto">
+            {/* HEADER */}
+            <div class="grid" style={{paddingTop:'30px'}}>
+                <div className="flex justify-between">
+                    <div>
                         <Link to='/'>
                             <Logo />
                         </Link>
-                </div>
+                    </div>
 
-                <div className="col" style={{textAlign: 'right', paddingTop:'10px'}}>
-                    <Link to='/' style={{color:'#EEEEEE', textDecoration: 'none'}}>
-                            <img src={arrow} alt="" /> Back to home page
-                    </Link>
+                    <div>
+                        <Link to='/' style={{color:'#EEEEEE', textDecoration: 'none'}}>
+                            <text>&#8592;</text> Back to home page
+                        </Link>
+                    </div>
                 </div>
-
             </div>
-
-            <div className="row" style={{paddingTop:'100px'}}>
+            {/* login */}
+            <div style={{marginTop:'100px'}}>
                 <div style={{textAlign:'center', fontWeight:'400px', fontSize:'72px', fontStyle:'normal', lineWeight:'108px', color:'#00ADB5'}}>
-                Sign in
+                    Sign in
                 </div>
                 <p style={{textAlign:'center', color:'#EEEEEE', fontStyle:'light'}}>
-                Hello there! sign in and start managing <br />
-                your money and wishlist!
+                    Hello there! sign in and start managing <br />
+                    your money and wishlist!
                 </p>
             </div>
 
-                {/* login form */}
-            <div className="row" style={{textAlign:'center', paddingTop:'60px'}}>
-                <LoginForm />
+            <div className='grid justify-items-center mt-10'>
+                <LoginForm/>
             </div>
         </div>
     )
 }
 
-export default Login
+export default Login1

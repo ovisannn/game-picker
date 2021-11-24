@@ -3,6 +3,7 @@ import './style/style.css';
 import Login from './pages/Login'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home/>}/>
         <Route exact path="/login" element={<Login/>}/>
+        <Route exact path="/dashboard" element={<Dashboard/>}/>
       </Routes>
     </Router>
     </>

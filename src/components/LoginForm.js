@@ -11,11 +11,15 @@ const LoginForm = () => {
 
     return (
         <form action="">
-            <input type="text" placeholder="Username" className="frm-style" required />
-            <br /><br />
-            <input type="password" placeholder="Password" className="frm-style" required />
-            <br /><br /> <br /><br />
-            <button type='button' className='btn' style={btnDetail}>Sign in</button>
+            <div className='mt-10'>
+                <input type="text" placeholder="Username" className="frm-style" required />
+            </div>
+            <div className='mt-10'>
+                <input type="password" placeholder="Password" className="frm-style" required />
+            </div>
+            <div className='text-center mt-10'>
+                <button type='button' className='btn m-auto' style={btnDetail}>Sign in</button>
+            </div>
         </form>
     )
 }
