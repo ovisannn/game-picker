@@ -11,7 +11,7 @@ const Login1 = () => {
                 <div className="flex justify-between">
                     <div>
                         <Link to='/'>
-                                    <Logo />
+                            <Logo />
                         </Link>
                     </div>
 

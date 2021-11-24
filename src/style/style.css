@@ -35,16 +35,17 @@ body{
 .valhalla{
     background-image: url(../img/bg1.svg);
     width: 100%;
-    height: 850px;
+    height: 900px;
 }
 
 .btn-bg{
     background-color: #00ADB5;
 }
 
-.footer{
-    width: 100%;
-    height: 422px;
+.bgFooter{
     background-color: #222831;
 }
   
+.bgCyan{
+    background-color: #00ADB5;
+}
