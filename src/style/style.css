@@ -17,8 +17,8 @@ body{
     width: 100%px;
     background-color: transparent;
     height: 35px;
-    -webkit-transition: border-bottom .30s ease-in-out;
-    -webkit-transition: color .20s ease-in-out;
+    transition: border-bottom .30s ease-in-out;
+    transition: color .20s ease-in-out;
 }
 
 .frm-style:focus{
@@ -28,8 +28,8 @@ body{
     border-right: none;
     border-bottom: 3px solid #00ADB5;
     color: #00ADB5;
-    -webkit-transition: border-bottom .30s ease-in-out;
-    -webkit-transition: color .20s ease-in-out;
+    transition: border-bottom .30s ease-in-out;
+    transition: color .20s ease-in-out;
 }
 
 .valhalla{
