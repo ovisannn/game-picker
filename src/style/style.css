@@ -4,6 +4,7 @@
 
 body{
     background-color: #393E46;
+    overflow-x: hidden;
 }
 
 .frm-style{
@@ -48,4 +49,17 @@ body{
   
 .bgCyan{
     background-color: #00ADB5;
+}
+
+.bgFadeCyan{
+    background-color: #AAD8D3;
+}
+
+.browseInput:focus{
+    outline: none;
+}
+
+.gameCard{
+    height: 200px;
+    width: 400px;
 }

@@ -19,7 +19,13 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:parcel": "parcel serve ./src/index.html",
+    "dev:css": "tailwindcss -o src/tailwind.css --watch",
+    "build": "npm-run-all build:css build:parcel",
+    "build:parcel": "parcel build ./src/index.html",
+    "build:css": "tailwindcss -o src/tailwind.css --minify"
   },
   "eslintConfig": {
     "extends": [
