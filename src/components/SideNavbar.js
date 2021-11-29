@@ -1,4 +1,4 @@
-import { BellIcon, UserCircleIcon, CashIcon, LogoutIcon, DocumentSearchIcon } from "@heroicons/react/solid"
+import { BellIcon, UserCircleIcon, CashIcon, LogoutIcon, DocumentSearchIcon, InboxInIcon } from "@heroicons/react/solid"
 import LogoIcon from '../img/pickAxe_logo.svg'
 import { Link } from "react-router-dom"
 
@@ -6,13 +6,18 @@ const SideNavbar = () => {
     return (
         <div className='fixed top-0 lef-0 h-screen w-24 flex flex-col content-center
         bg-gpgd shadow-lg'>
-            <img className='mt-6 h-14 w-14 mx-auto' src={LogoIcon} alt="" />
+            <Link to='/dashboard'>
+                <img className='mt-6 h-14 w-14 mx-auto' src={LogoIcon} alt="" />
+            </Link>
             <div className='mt-10 mb-10'>
+                <Link to='/dashboard'>
+                    <SideBarIcon text='dashboard' icon={<InboxInIcon className='h-8 w-8'/>} />
+                </Link>
                 <Link to=''>
                     <SideBarIcon text='notification' icon={<BellIcon className='h-8 w-8'/>} />
                 </Link>
-                <Link to=''>
-                    <SideBarIcon text='finance' icon={<CashIcon className='h-8 w-8' />} />
+                <Link to='/finance'>
+                    <SideBarIcon text='finance reports' icon={<CashIcon className='h-8 w-8' />} />
                 </Link>
                 <Link to='/browse'>
                     <SideBarIcon text='browse wishlist' icon={<DocumentSearchIcon className='h-8 w-8' />} />   
