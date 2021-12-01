@@ -29,7 +29,9 @@ const SideNavbar = () => {
                 
                 
             </div>
-            <SideBarLogOutIcon text='logout' icon={<LogoutIcon className='h-8 w-8' />} />
+            <Link to='/login'>
+                <SideBarLogOutIcon text='logout' icon={<LogoutIcon className='h-8 w-8' />} />
+            </Link>
         </div>
     )
 }

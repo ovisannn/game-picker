@@ -2,36 +2,9 @@ import Footer from "../components/Footer"
 import SideNavbar from "../components/SideNavbar"
 import ListGame from "../components/ListGame"
 import { useState } from "react"
-import { SearchIcon } from "@heroicons/react/solid"
+// import { SearchIcon } from "@heroicons/react/solid"
 import { useEffect } from "react"
-import { getDefaultNormalizer } from "@testing-library/react"
-
-const var_Games = [
-    {
-        gameID:"612",
-        steamAppID:"21000",
-        cheapest:"4.25",
-        cheapestDealID:"yuFa2LP6YPaGwaTN7wgUfIe9bStUX5FRUK3QJznSS8s%3D",
-        external:"LEGO Batman",
-        internalName:"LEGOBATMAN",
-        thumb:"https://originassets.akamaized.net/origin-com-store-final-assets-prod/195763/142.0x200.0/1040463_MB_142x200_en_US_^_2017-09-08-15-21-36_d7034d41216b6dc201fb20e0cee37c1e66190a11.jpg"},
-        {
-            gameID:"612",
-            steamAppID:"21000",
-            cheapest:"4.25",
-            cheapestDealID:"yuFa2LP6YPaGwaTN7wgUfIe9bStUX5FRUK3QJznSS8s%3D",
-            external:"LEGO Batman",
-            internalName:"LEGOBATMAN",
-            thumb:"https://originassets.akamaized.net/origin-com-store-final-assets-prod/195763/142.0x200.0/1040463_MB_142x200_en_US_^_2017-09-08-15-21-36_d7034d41216b6dc201fb20e0cee37c1e66190a11.jpg"},
-            {
-                gameID:"612",
-                steamAppID:"21000",
-                cheapest:"4.25",
-                cheapestDealID:"yuFa2LP6YPaGwaTN7wgUfIe9bStUX5FRUK3QJznSS8s%3D",
-                external:"LEGO Batman",
-                internalName:"LEGOBATMAN",
-                thumb:"https://originassets.akamaized.net/origin-com-store-final-assets-prod/195763/142.0x200.0/1040463_MB_142x200_en_US_^_2017-09-08-15-21-36_d7034d41216b6dc201fb20e0cee37c1e66190a11.jpg"},
-]
+// import { getDefaultNormalizer } from "@testing-library/react"
 
 const dummy =[
     {
@@ -75,23 +48,25 @@ const SearchBar = ({onSearch}) =>{
 
 const Browse = () => {
     let [searchVar, setSearchVar] = useState("")
-    let [varGameList, setGameList] = useState(var_Games)
+    let [varGameList, setGameList] = useState([])
 
     let SearchFunc = (searchV) =>{
         setSearchVar(searchV)
         // setGameList(dummy)
-        let getGame_URL = `https://www.cheapshark.com/api/1.0/games?title=${searchVar}`
+        let getGame_URL = `https://www.cheapshark.com/api/1.0/games?title=batman`
         useEffect(() => {
-            getData();
-            async function getData(){
-                const response = await fetch(getGame_URL)
-                const data = response.json()
-                setGameList(data)
-            }
+            const response = fetch(getGame_URL)
+            const data = response.json()
+            setGameList(data)
         },[])
     }
     
-
+    let FetchInitData = () => {
+        const response = fetch(`https://www.cheapshark.com/api/1.0/games?title=batman`)
+        const data = response.json()
+        setGameList(data)
+    }
+    useEffect(()=> FetchInitData)
 
     return (
         <div className='flex'>

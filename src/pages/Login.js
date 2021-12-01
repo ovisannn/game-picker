@@ -1,13 +1,22 @@
 import { Link } from 'react-router-dom'
-
+// import { gql, useQuery } from '@apollo/client';
+// import { useState } from 'react'; 
 import LoginForm from '../components/LoginForm'
 import Logo from '../components/Logo'
 
-const Login1 = () => {
+
+const Login1 = () => { 
+
+
+    const Yolo =() =>{
+        console.log('a')
+    }
+
+    
     return (
         <div className="md:container md:mx-auto">
             {/* HEADER */}
-            <div class="grid" style={{paddingTop:'30px'}}>
+            <div className="grid" style={{paddingTop:'30px'}}>
                 <div className="flex justify-between">
                     <div>
                         <Link to='/'>
@@ -17,7 +26,7 @@ const Login1 = () => {
 
                     <div>
                         <Link to='/' style={{color:'#EEEEEE', textDecoration: 'none'}}>
-                            <text>&#8592;</text> Back to home page
+                            &#8592; Back to home page
                         </Link>
                     </div>
                 </div>
@@ -34,7 +43,7 @@ const Login1 = () => {
             </div>
 
             <div className='grid justify-items-center mt-10'>
-                <LoginForm/>
+                <LoginForm loginFunc = {Yolo}/>
             </div>
         </div>
     )

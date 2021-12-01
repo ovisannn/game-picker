@@ -1,43 +1,75 @@
 import SideNavbar from "../components/SideNavbar"
 import { Tab } from '@headlessui/react'
 import { useState } from "react"
+import { gql, useQuery } from '@apollo/client'
+import { TrashIcon } from '@heroicons/react/solid'
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
 
-const FinanceCard = () =>{
+const FinanceCard = ({initData, income=true}) =>{
+    const inStyle = 'font-bold text-green-500'
+    const outStyle = 'font-bold text-red-500'
     return(
-        <>
-        <div className="flex flex-col h-24 w-11/12 bg-gpw mx-5 my-5 rounded-md p-5">
+        <div className="flex flex-col h-auto w-11/12 bg-gpw mx-5 my-5 rounded-md p-5">
             <div className="flex flex-row justify-between">
-                <div className="">
-                    <h2 className='font-bold'>27 November 2021</h2>
+                <div className="ml-5">
+                    <h2 className='font-bold'>{initData.date}</h2>
                 </div>
-                <div className="">
-                    <h2 className='font-bold'>25000</h2>
+                <div className="mr-5">
+                    <h2 className={income? inStyle : outStyle}>Rp{initData.amount}</h2>
                 </div>
             </div>
-            <div>
-                tes
-            </div>
-        </div>
+            <div className='flex flex-row justify-between'>
+                <div>
+                    <p className='m-5 mt-5 max-w-3xl'>
+                    {initData.description}
+                    </p>
+                </div>
+                <div className="h-8 w-8 bg-red-500 mt-10 rounded-md text-center justify-center align-middle p-1/2 text-gpw cursor-pointer">
+                    <TrashIcon className='w-8 h-8' />
+                </div>
 
-        <div className="flex flex-row justify-between h-24 w-11/12 bg-gpw mx-5 my-5 rounded-md p-5">
-            <div className="">
-                <h2 className='font-normal'>Say something, I'm giving up on you. I'll be the one, if you want me to</h2>
             </div>
         </div>
-        </>
     )
 }
 
 const FinanceReport = () =>{
-    const class_inActive = 'w-44 h-10 text-gpw bg-gpc hover:bg-gpc m-2 text-center hover:text-gpcl rounded-md font-bold'
 
-    const class_Active = 'w-44 h-10 bg-none border-2 text-gpc border-gpc hover:bg-gpc m-2 text-center hover:text-gpcl rounded-md font-bold'
+    const get_income_data = gql`
+    query MyQuery {
+        incomeReport {
+          id
+          description
+          date
+          amount
+        }
+        outcomeReport {
+          id
+          description
+          date
+          amount
+        }
+      }   
+    `
 
 
+        const { loading, error, data } = useQuery(get_income_data)
+
+        const incomeData = data?.incomeReport
+        const outcomeData = data?.outcomeReport
+        if (loading){ return ('loading')}
+        if (error) {return null}
+
+        // console.log(incomeData)
+        const class_inActive = 'w-44 h-10 text-gpw bg-gpc  m-2 text-center rounded-md font-bold'
+
+        const class_Active = 'w-44 h-10 bg-none border-2 text-gpc border-gpc h m-2 text-center  rounded-md font-bold'
+
+        // console.log(getInitData)
     return(
         <div className="flex flex-col w-full justify-item-center">
             <Tab.Group>
@@ -57,13 +89,20 @@ const FinanceReport = () =>{
                         )}>Outcome reports</Tab>
                     </Tab.List>
                 </div>
-                <div className="bg-gpgd rounded-b-md rounded-tr-md">
+                <div className="bg-gpgd min-h-10 rounded-b-md rounded-tr-md">
                     <Tab.Panels>
+                        {/* income */}
                         <Tab.Panel >
-                            <FinanceCard />
+                            {incomeData.map((initData)=>(
+                                <FinanceCard key={initData.id} initData={initData} income={true} />
+                            ))}
                         </Tab.Panel>
+                        {/* outcome */}
                         <Tab.Panel>
-                            <FinanceCard />
+                            {/* <FinanceCard /> */}
+                            {outcomeData.map((initData)=>(
+                                <FinanceCard key={initData.id} initData={initData} income={false} />
+                            ))}
                         </Tab.Panel>
                     </Tab.Panels>
                 </div>
@@ -74,6 +113,7 @@ const FinanceReport = () =>{
 
 
 const Finance = () => {
+
     return (
         <div>
             <div className ='flex flex-col'>

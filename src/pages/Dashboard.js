@@ -1,10 +1,15 @@
 // import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+// import Footer from '../components/Footer'
 import SideNavbar from '../components/SideNavbar'
+import { useSelector } from 'react-redux'
+import { gql, useQuery } from '@apollo/client'
+import { Link } from 'react-router-dom'
+
 
 
 
 const InputSavings =()=>{
+
     return(
         <div className="w-4/12 h-auto bg-gpgd shadow-lg ml-24 rounded-lg p-6 mt-24 left-24 transition-all hover:border-4 hover:border-gpc"><h2 className='text-xl font-bold text-gpw'>input income</h2>
             <div className='flex flex-col justify-center '>
@@ -50,6 +55,44 @@ const InputOutcome =()=>{
 }
 
 const Dashboard = () => {
+    const account = useSelector((state)=>state.account)
+    const get_user =gql`
+    query MyQuery {
+        user(where: {password: {_eq: "${account.username}"}, username: {_eq: "${account.password}"}}) {
+          id
+          id_detail
+          password
+          username
+        }
+      }
+    `
+    const { loading, error, data } = useQuery(get_user)
+    if (loading){ return ('loading')}
+    if (error) {return null}
+    // console.log(data?.user)
+    if (account.username ==='' || account.password ==='' || data?.user.length === 0){
+        return(
+            <div>
+            <div className ='flex flex-col'>
+                {/* <Navbar /> */}
+                <div>
+                    <SideNavbar />
+                </div>
+                <div className='flex'>
+                    <div className="w-24 left-0 top-0" />
+                    <div className="flex-auto">
+                        <div className="flex flex-row align-middle justify-center pt-32">
+                            {alert('Session ended or you might enter wrong login info')}
+                            <Link to='/login'>
+                                <div className="w-32 h-12 bg-gpc cursor-pointer text-gpw font-bold text-center pt-3">Relogin</div>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        )
+    }
     return (
     <>
         <div>

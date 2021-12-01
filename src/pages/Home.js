@@ -107,14 +107,14 @@ const Home = () => {
 
         {/* section3 */}
         <div className="justify-items-center text-center text-white pt-10 pb-32">
-            <div className="text-5xl" pb-14>
+            <div className="text-5xl">
                 We have huge game’s price database!
             </div>
             <div className="text-2xl mt-14">
             You can set your wishlist by adding games that you want to buy to increase <br /> your savings spirit!
             </div>
             <div className='container mx-auto px-4 pt-14'>
-                <div class="grid grid-cols-4 gap-4 text-white">
+                <div className="grid grid-cols-4 gap-4 text-white">
                     <div>
                         <img src={img1} alt="" width='95%' />
                     </div>

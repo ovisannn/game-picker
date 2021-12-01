@@ -6,7 +6,7 @@ const Button = ({text}) => {
     }
     return (
         // <button type="button">{text}</button>
-        <button class="text-white font-bold" style={btnDetail}>
+        <button className="text-white font-bold" style={btnDetail}>
         {text}
         </button>
     )
