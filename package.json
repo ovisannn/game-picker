@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "npm-run-all build:css build:parcel",
+    "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "dev": "npm-run-all --parallel dev:*",
