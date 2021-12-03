@@ -1,4 +1,4 @@
-import Footer from "../components/Footer"
+// import Footer from "../components/Footer"
 import SideNavbar from "../components/SideNavbar"
 import ListGame from "../components/ListGame"
 import { useState } from "react"
@@ -6,16 +6,6 @@ import { useState } from "react"
 import { useEffect } from "react"
 // import { getDefaultNormalizer } from "@testing-library/react"
 
-const dummy =[
-    {
-        gameID:"1",
-        steamAppID:"",
-        cheapest:"",
-        cheapestDealID:"",
-        external:"baaaaaaaaaaaaaaaaaaaat",
-        internalName:"",
-        thumb:""}
-]
 
 const SearchBar = ({onSearch}) =>{
     let [search, setSearch] = useState('')
@@ -36,7 +26,7 @@ const SearchBar = ({onSearch}) =>{
                             <input className='h-8 w-11/12 border-b-1 border-red bg-gpw rounded-md' type="text" value={search} onChange={(e)=>setSearch(e.target.value)} />
                         </div>
                         <div className='items-center  pt-5'>
-                            <button className='browseInput justify-center bg-gpc h-8 w-1/12 border-3 border-red-500 text-gpw rounded-3xl hover:rounded-md transition-all ease-linear duration-300 focus:outline-none text-center' type='submit' onClick={onSubmit}>submit</button>
+                            <button className='browseInput justify-center bg-gpc h-8 w-1/12 border-3 border-red-500 text-gpw rounded-3xl hover:rounded-md transition-all ease-linear duration-300 focus:outline-none text-center' type='submit' onClick={onSubmit} placeholder='try batman'>submit</button>
                         </div>
                     </div>
     
@@ -51,22 +41,24 @@ const Browse = () => {
     let [varGameList, setGameList] = useState([])
 
     let SearchFunc = (searchV) =>{
+        // console.log(searchV)
         setSearchVar(searchV)
         // setGameList(dummy)
-        let getGame_URL = `https://www.cheapshark.com/api/1.0/games?title=batman`
-        useEffect(() => {
-            const response = fetch(getGame_URL)
-            const data = response.json()
-            setGameList(data)
-        },[])
     }
     
-    let FetchInitData = () => {
-        const response = fetch(`https://www.cheapshark.com/api/1.0/games?title=batman`)
-        const data = response.json()
-        setGameList(data)
-    }
-    useEffect(()=> FetchInitData)
+
+    useEffect(() =>{
+        fetch(`https://www.cheapshark.com/api/1.0/games?title=${searchVar}`)
+        .then(response => response.json())
+        .then(json => setGameList(json))
+    }, [searchVar])
+    // let FetchInitData = () => {
+    //     const response = fetch(`https://www.cheapshark.com/api/1.0/games?title=batman`)
+    //     const data = response.json()
+    //     setGameList(data)
+    // }
+    
+
 
     return (
         <div className='flex'>
@@ -81,7 +73,7 @@ const Browse = () => {
                     <section>
                         <ListGame searchByName={varGameList}/>
                     </section>
-                    <Footer />
+                    {/* <Footer /> */}
                 </div>
         </div>
     )

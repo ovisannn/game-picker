@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { ActionCreator } from '../state/actionIndex'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
 const LoginForm = ({loginFunc}) => {
     const dispatch = useDispatch()
-    const account = useSelector((state) => state.account)
+    // const account = useSelector((state) => state.account)
     const { Login } = bindActionCreators(ActionCreator, dispatch)
     const [getUname, setUname] = useState('')
     const [getPw, setPw] = useState('')
